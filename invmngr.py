@@ -117,12 +117,12 @@ def add():
 	global schrank 
 
 	os.system('clear')
-	print("ID eingeben:")
+	print("Input ID:")
 	ident = str(input("> "))
 
 	if ident in schrank:
 		try:
-			print("Anzahl ändern: ")
+			print("Change amount (number gets added): ")
 			i = int(input("> "))
 			schrank[ident][1] += i
 			save = False
@@ -134,24 +134,19 @@ def add():
 	elif ident not in schrank:
 		print("Add new Item? Y/n")
 		if choice(str(input("> "))):
-			print("Name eingeben:")
+			print("Name:")
 			schrank[ident] = ["", 0]
 			schrank[ident][0] = str(input("> "))
 			key_list.append(ident)
 			save = False
 
-			print("Anzahl eingeben:")
+			print("Amount")
 			schrank[ident][1] += int(input("> "))
 			show()
-			print("Vorgang Abgeschlossen")
+			print("finished")
 
 	fileexport(filename)
 	i_out()
-
-def configfile():
-	print("####################")
-	
-
 
 
 def fileimport(filename):
@@ -163,7 +158,6 @@ def fileimport(filename):
 		    	key_list.append(key)
 	except:
 		print("No *.json file to load Dictionary. The File 'inv' will be created when adding the first item")
-		
 		input("")
 		
 	    	
@@ -177,11 +171,9 @@ def fileexport(filename):
 
 schrank = {}
 key_list = []
-save = True
 filename = "inv"
 
 fileimport(filename)
-print(schrank)
 i_out()
 
 
